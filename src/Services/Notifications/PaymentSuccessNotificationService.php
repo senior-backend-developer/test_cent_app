@@ -39,10 +39,7 @@ class PaymentSuccessNotificationService
      */
     protected function dispatchRule(Payment $payment): bool
     {
-        if ($payment->getPaymentMethod()->getClassName() === QiWi::class ||
-            $payment->getAmount()->getCurrency()->getCode() === CurrencyBook::EUR) {
-            return true;
-        }
-        return false;
+        return $payment->getPaymentMethod()->getClassName() === QiWi::class ||
+            $payment->getAmount()->getCurrency()->getCode() === CurrencyBook::EUR;
     }
 }
