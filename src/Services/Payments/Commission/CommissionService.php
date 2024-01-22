@@ -4,7 +4,7 @@ namespace App\Services\Payments\Commission;
 
 use App\Exceptions\GeneralException;
 use App\Models\Fee;
-use App\Repository\FeeRepository;
+use App\Repositories\FeeRepository;
 use App\Services\Money\MoneyService;
 use App\Services\Payments\Commands\CreatePaymentCommand;
 use Exception;
