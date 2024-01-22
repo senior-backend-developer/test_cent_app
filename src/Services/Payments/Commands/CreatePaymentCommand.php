@@ -4,28 +4,45 @@
 namespace App\Services\Payments\Commands;
 
 
-use App\PaymentMethods\Card;
+use App\Banks\BankInterface;
+use App\PaymentMethods\PaymentMethod;
 use Money\Money;
 
 class CreatePaymentCommand
 {
 
     private Money $amount;
-    private Card $card;
+    private PaymentMethod $paymentMethod;
+    private BankInterface $bank;
 
-    public function __construct(Money $amount, Card $card)
+    public function __construct(Money $amount, PaymentMethod $paymentMethod, BankInterface $bank)
     {
         $this->amount = $amount;
-        $this->card = $card;
+        $this->paymentMethod = $paymentMethod;
+        $this->bank = $bank;
     }
 
+    /**
+     * @return Money
+     */
     public function getAmount(): Money
     {
         return $this->amount;
     }
 
-    public function getCard(): Card
+    /**
+     * @return PaymentMethod
+     */
+    public function getPaymentMethod(): PaymentMethod
     {
-        return $this->card;
+        return $this->paymentMethod;
+    }
+
+    /**
+     * @return BankInterface
+     */
+    public function getBank(): BankInterface
+    {
+        return $this->bank;
     }
 }
